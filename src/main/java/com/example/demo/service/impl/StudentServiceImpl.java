@@ -1,12 +1,20 @@
-package com.example.demo.controller;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+package com.example.demo.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.example.demo.entity.StudentEntity;
 import com.example.demo.repository.StudentRepository;
 import com.example.demo.service.StudentService;
-import com.example.demo.entity.StudentEntity;
-public class StudentServiceImpl implements StudentService{
 
+@Service
+public class StudentServiceImpl implements StudentService {
+
+    @Autowired
+    StudentRepository repo;
+
+    @Override
+    public StudentEntity addStudents(StudentEntity student) {
+        return repo.save(student);
+    }
+ 
 }
