@@ -22,8 +22,12 @@ public class StudentServiceImpl implements StudentService {
         return repo.findAll();
     }
     @Override
-    public StudentEntity getStudentbyId(Long id){
-        return repo.findById(id);
+    public StudentEntity getStudentById(Long id){
+        return repo.findById(id).orElse(null);
+    }
+    @Override
+    public void deleteStudentById(Long id){
+        repo.deleteById(id);
     }
 
 }
